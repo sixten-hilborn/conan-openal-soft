@@ -34,11 +34,7 @@ class openal(ConanFile):
 		self.copy("*.h", dst = "OpenAL32", src = os.path.join(self.FOLDER_NAME, "OpenAL32"))
 		self.copy("*.h", dst = "include", src = os.path.join(self.FOLDER_NAME, "include"))
 		self.copy("*.h", dst = "Alc", src = os.path.join(self.FOLDER_NAME, "Alc"))
-
-		self.copy("*.dll", dst = "lib", src = "install/lib")
-		self.copy("*.lib", dst = "lib", src = "install/lib")
-		self.copy("*.dylib", dst = "lib", src = "install/lib")
-		self.copy("*.a", dst = "lib", src = "install/lib")
+		self.copy("*", dst = "lib", src = "install/lib")
 
 	def package_info(self):
 		if self.settings.os == "Linux":
