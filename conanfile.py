@@ -7,8 +7,8 @@ class openal(ConanFile):
 	version = "1.17.2"
 	FOLDER_NAME = "openal-soft"
 	settings = "os" , "compiler", "build_type", "arch"
-    url = "https://github.com/R3v3nX/conan-openal-soft"
-    author = "Bartlomiej Parowicz (bparowicz@gmail.com)"
+	url = "https://github.com/R3v3nX/conan-openal-soft"
+	author = "Bartlomiej Parowicz (bparowicz@gmail.com)"
 	license = "MIT License"
 	options = {"shared": [True, False]}
 	default_options = "shared=False"
