@@ -13,6 +13,12 @@ class openal(ConanFile):
 
 	def source(self):
 		self.run("git clone https://github.com/kcat/openal-soft.git")
+	
+	def system_requirements(self):
+		if self.settings.os == "Linux":
+			self.run("sudo apt-get install pulseaudio")
+			self.run("sudo apt-get install alsa-base")
+			self.run("sudo apt-get install oss-compat")
 
 	def build(self):
 		cmake = CMake(self.settings)
