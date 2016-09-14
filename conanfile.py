@@ -16,9 +16,7 @@ class openal(ConanFile):
 	
 	def system_requirements(self):
 		if self.settings.os == "Linux":
-			self.run("sudo apt-get install pulseaudio")
-			self.run("sudo apt-get install alsa-base")
-			self.run("sudo apt-get install oss-compat")
+			self.run("sudo apt-get install libasound2-dev")
 
 	def build(self):
 		cmake = CMake(self.settings)
