@@ -1,18 +1,19 @@
 from conans import ConanFile, CMake
+from conans.tools import get
 import sys
 import os
 
 class openal(ConanFile):
 	name = "openal-soft"
 	version = "1.17.2"
-	FOLDER_NAME = "openal-soft"
+	FOLDER_NAME = "openal-soft-openal-soft-1.17.2"
 	settings = "os", "compiler", "build_type", "arch"
 	url = "https://github.com/R3v3nX/conan-openal-soft"
 	author = "Bartlomiej Parowicz (bparowicz@gmail.com)"
 	license = "MIT License"
 
 	def source(self):
-		self.run("git clone https://github.com/kcat/openal-soft.git")
+		get("https://github.com/kcat/openal-soft/archive/openal-soft-1.17.2.tar.gz")
 	
 	def system_requirements(self):
 		if self.settings.os == "Linux":
