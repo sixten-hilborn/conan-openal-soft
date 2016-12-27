@@ -10,6 +10,7 @@ class openal(ConanFile):
 	settings = "os", "compiler", "build_type", "arch"
 	url = "https://github.com/R3v3nX/conan-openal-soft"
 	author = "Bartlomiej Parowicz (bparowicz@gmail.com)"
+	exports = ["FindOpenAl.cmake"]
 	license = "MIT License"
 
 	def source(self):
