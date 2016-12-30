@@ -30,11 +30,12 @@ class openal(ConanFile):
 		self.run("echo cmake --build. --target install %s" % cmake.build_config)
 
 	def package(self):
-		self.copy("*.h", dst = "OpenAL32", src = os.path.join(self.FOLDER_NAME, "OpenAL32"))
-		self.copy("*.h", dst = "include", src = os.path.join(self.FOLDER_NAME, "include"))
-		self.copy("*.h", dst = "Alc", src = os.path.join(self.FOLDER_NAME, "Alc"))
-		
-		self.copy("*", dst = "lib", src = "install/lib")
+		self.copy("*.h", dst="include", src="install/include")
+		self.copy("*.lib", dst="lib", src="install/lib")
+		self.copy("*.a", dst="lib", src="install/lib")
+		self.copy("*.so", dst="lib", src="install/lib")
+		self.copy("*.dll", dst="bin", src="install/bin")
+		self.copy("*.dylib", dst="bin", src="install/bin")
 
 	def package_info(self):
 		if self.settings.os == "Windows":
