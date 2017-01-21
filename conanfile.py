@@ -1,5 +1,5 @@
 from conans import ConanFile, CMake
-from conans.tools import get, SystemPackageTool
+from conans.tools import get, SystemPackageTool, replace_in_file
 import sys
 import os
 
@@ -21,6 +21,10 @@ class openal(ConanFile):
 
 	def source(self):
 		get("https://github.com/kcat/openal-soft/archive/openal-soft-1.17.2.tar.gz")
+		replace_in_file("{0}/CMakeLists.txt".format(self.FOLDER_NAME), "PROJECT(OpenAL)", """PROJECT(OpenAL)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+conan_basic_setup()
+""")
 
 	def build(self):
 		cmake = CMake(self.settings)
