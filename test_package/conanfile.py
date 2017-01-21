@@ -29,4 +29,5 @@ class DefaultNameConan(ConanFile):
         self.copy(pattern="*.dylib", dst="bin", src="lib")
         
     def test(self):
+        self.run("find .")  # Debug in CI...
         self.run("cd bin && .%sexample" % (os.sep))
