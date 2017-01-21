@@ -8,6 +8,7 @@ class openal(ConanFile):
 	version = "1.17.2"
 	FOLDER_NAME = "openal-soft-openal-soft-1.17.2"
 	settings = "os", "compiler", "build_type", "arch"
+	generators = "cmake"
 	url = "https://github.com/sixten-hilborn/conan-openal-soft"
 	author = "Bartlomiej Parowicz (bparowicz@gmail.com)"
 	exports = ["FindOpenAl.cmake"]
