@@ -33,11 +33,11 @@ class openal(ConanFile):
 
 	def package(self):
 		self.copy("*.h", dst="include", src="install/include")
-		self.copy("*.lib", dst="lib", src="install/lib")
-		self.copy("*.a", dst="lib", src="install/lib")
-		self.copy("*.so", dst="lib", src="install/lib")
-		self.copy("*.dll", dst="bin", src="install/bin")
-		self.copy("*.dylib", dst="lib", src="install/bin")
+		self.copy("*.lib", dst="lib", src="install/lib", keep_path=False)
+		self.copy("*.a", dst="lib", src="install/lib", keep_path=False)
+		self.copy("*.so", dst="lib", src="install/lib", keep_path=False)
+		self.copy("*.dll", dst="bin", src="install/bin", keep_path=False)
+		self.copy("*.dylib", dst="lib", src="install/bin", keep_path=False)
 
 	def package_info(self):
 		if self.settings.os == "Windows":
