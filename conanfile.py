@@ -42,7 +42,7 @@ conan_basic_setup()
 		self.copy("*.a", dst="lib", src="install/lib", keep_path=False)
 		self.copy("*.so*", dst="lib", src="install/lib", keep_path=False, links=True)
 		self.copy("*.dll", dst="bin", src="install/bin", keep_path=False)
-		self.copy("*.dylib", dst="lib", src="install/lib", keep_path=False)
+		self.copy("*.dylib", dst="lib", src="install/lib", keep_path=False, links=True)
 
 	def package_info(self):
 		if self.settings.os == "Windows":
