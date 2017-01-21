@@ -1,5 +1,5 @@
 from conans import ConanFile, CMake
-from conans.tools import get
+from conans.tools import get, SystemPackageTool
 import sys
 import os
 
@@ -13,17 +13,19 @@ class openal(ConanFile):
 	exports = ["FindOpenAl.cmake"]
 	license = "MIT License"
 
-	def source(self):
-		get("https://github.com/kcat/openal-soft/archive/openal-soft-1.17.2.tar.gz")
-	
 	def system_requirements(self):
 		if self.settings.os == "Linux":
-			self.run("sudo apt-get install libasound2-dev")
+			installer = SystemPackageTool()
+			installer.update()
+			installer.install("libasound2-dev")
+
+	def source(self):
+		get("https://github.com/kcat/openal-soft/archive/openal-soft-1.17.2.tar.gz")
 
 	def build(self):
 		cmake = CMake(self.settings)
 
-		args  = ["-DCMAKE_INSTALL_PREFIX=install"]
+		args = ["-DCMAKE_INSTALL_PREFIX=install"]
 
 		self.run("cmake %s %s %s" % (self.FOLDER_NAME, cmake.command_line, ' '.join(args)))
 		self.run("cmake --build . --target install %s" % cmake.build_config)
@@ -35,10 +37,10 @@ class openal(ConanFile):
 		self.copy("*.a", dst="lib", src="install/lib")
 		self.copy("*.so", dst="lib", src="install/lib")
 		self.copy("*.dll", dst="bin", src="install/bin")
-		self.copy("*.dylib", dst="bin", src="install/bin")
+		self.copy("*.dylib", dst="lib", src="install/bin")
 
 	def package_info(self):
 		if self.settings.os == "Windows":
-			self.cpp_info.libs = [ "OpenAL32"]
+			self.cpp_info.libs = ["OpenAL32"]
 		else:
 			self.cpp_info.libs = ["openal"]
