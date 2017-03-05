@@ -17,7 +17,6 @@ class openal(ConanFile):
 	def system_requirements(self):
 		if self.settings.os == "Linux":
 			installer = SystemPackageTool()
-			installer.update()
 			installer.install("libasound2-dev")
 
 	def source(self):
