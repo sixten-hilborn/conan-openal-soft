@@ -46,25 +46,6 @@ env:
         osx_image: xcode9
         env: CONAN_APPLE_CLANG_VERSIONS=9.0 CONAN_CURRENT_PAGE=3
 
-matrix:
-   include:
-       - os: osx
-         osx_image: xcode8.2
-         language: generic
-         env:
-       - os: osx
-         osx_image: xcode8.1
-         language: generic
-         env:
-       - os: osx
-         osx_image: xcode8
-         language: generic
-         env:
-       - os: osx
-         osx_image: xcode7.3 # apple-clang 7.3
-         language: generic
-         env:
-
 install:
   - ./.travis/install.sh
 script:
