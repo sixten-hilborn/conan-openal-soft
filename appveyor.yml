@@ -4,7 +4,7 @@ environment:
     PYTHON_VERSION: "2.7.8"
     PYTHON_ARCH: "32"
     
-    CONAN_UPLOAD: 1
+    CONAN_UPLOAD: "https://api.bintray.com/conan/sixten-hilborn/public-conan"
     CONAN_REFERENCE: "openal-soft/1.20.1"
     CONAN_USERNAME: "sixten-hilborn"
     CONAN_CHANNEL: "stable"
