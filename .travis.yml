@@ -6,7 +6,7 @@ language: python
 env:
   global:
     - CONAN_UPLOAD="https://api.bintray.com/conan/sixten-hilborn/public-conan"
-    - CONAN_REFERENCE="openal-soft/1.20.1"
+    - CONAN_REFERENCE="openal/1.20.1"
     - CONAN_USERNAME="sixten-hilborn"
     - CONAN_CHANNEL="stable"
     - CONAN_TOTAL_PAGES=3
