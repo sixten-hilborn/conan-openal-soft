@@ -31,10 +31,14 @@ class OpenALConan(ConanFile):
             del self.options.fPIC
 
     def configure(self):
+        if tools.Version("1.20") <= self.version and self.settings.compiler.get_safe("cppstd"):
+            tools.check_min_cppstd(self, "11")
+
         if self.options.shared:
             del self.options.fPIC
-        del self.settings.compiler.libcxx
-        del self.settings.compiler.cppstd
+        if tools.Version('1.20') > self.version:
+            del self.settings.compiler.libcxx
+            del self.settings.compiler.cppstd
 
     def requirements(self):
         if self.settings.os == "Linux":
@@ -58,7 +62,7 @@ class OpenALConan(ConanFile):
         return self._cmake
 
     def build(self):
-        for patch in self.conan_data["patches"][self.version]:
+        for patch in self.conan_data.get("patches", {}).get(self.version, []):
             tools.patch(**patch)
         cmake = self._configure_cmake()
         cmake.build()
